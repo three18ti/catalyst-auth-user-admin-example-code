@@ -1,0 +1,31 @@
+[% META title = 'MyApp: User Admin' %]
+
+<br />
+<a class="button" href="[% c.uri_for('/user/add') %]" onclick='this.blur();'><span>Add User</span></a>
+<br />
+Displaying users [% pager.first %]-[% pager.last %] of [% pager.total_entries %]
+
+<table>
+<tr>
+    <th>Username</th>
+    <th>Name</th>
+    <th>Email Address</th>
+</tr>
+[% WHILE (u = users.next) %]
+<tr>
+<td><a href="[% c.uri_for('/user', u.id, 'edit') %]">[% u.username %]</a></td>
+<td>[% u.name %]</td>
+<td>[% u.email_address %]</td>
+<td><a href="[% c.uri_for('/user', u.id, 'reset_password') %]">Reset Password</a></td>
+<td><a href="[% c.uri_for('/user', u.id, 'inactivate') %]">Inactivate</a></td>
+</tr>
+[% END %]
+</table>
+
+&lt;&lt; 
+<a href="[% c.req.uri_with({ page => pager.first_page }) %]">First</a>
+<a href="[% c.req.uri_with({ page => pager.previous_page })%]">Previous</a>
+|
+<a href="[% c.req.uri_with({ page => pager.next_page })%]">Next</a>
+<a href="[% c.req.uri_with({ page => pager.last_page }) %]">Last</a>
+&gt;&gt;

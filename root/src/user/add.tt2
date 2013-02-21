@@ -1,0 +1,27 @@
+[% META title = 'MyApp: Add User' %]
+
+<div>
+<form name="[% form.name %]" action="[% c.req.uri %]" method="post">
+
+[% FOR field IN form.error_fields %]
+    [% FOR error IN field.errors %]
+        <p><span style="color: red;">[% field.label _ ': ' _ error %]</span></p>
+    [% END %]
+[% END %]
+
+<fieldset style="border: 0;">
+<table>
+<tr>
+[% f = form.field('username') %]
+<td><label for="[% f.name %]">[% f.label %]:</label></td>
+<td><input type="text" size=30 name="[% f.name %]" id="[% f.name %]" value="[% f.fif %]"></td>
+</tr>
+[% PROCESS user/edit_details.tt2 %]
+<tr>
+    <td><input type="submit" name="submit" id="submit" value="Add" /></td>
+    <td><a href="/user/list">Users List</a></td>
+</tr>
+</fieldset>
+</table>
+</form>
+</div>

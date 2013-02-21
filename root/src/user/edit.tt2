@@ -1,0 +1,22 @@
+[% META title = 'MyApp: Edit User' %]
+
+<div>
+<form name="[% form.name %]" action="[% c.req.uri %]" method="post">
+
+[% FOR field IN form.error_fields %]
+    [% FOR error IN field.errors %]
+        <p><span style="color: red;">[% field.label _ ': ' _ error %]</span></p>
+    [% END %]
+[% END %]
+
+<fieldset style="border: 0;">
+<table>
+[% PROCESS user/edit_details.tt2 %]
+<tr>
+    <td><input type="submit" name="submit" id="submit" value="Update" /></td>
+    <td><a href="/user/list">Users List</a></td>
+</tr>
+</fieldset>
+</table>
+</form>
+</div>

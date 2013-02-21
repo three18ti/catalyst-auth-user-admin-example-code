@@ -1,0 +1,13 @@
+[% FOREACH field_name = ['name', 'email_address',
+                         'phone_number', 'mail_address'] %]
+<tr>
+[% f = form.field(field_name) %]
+<td><label class="text.label" for="[% f.name %]">[% f.label %]:</label></td>
+<td><input class="text" type="text" size=30 name="[% f.name %]" id="[% f.name %]" value="[% f.fif %]"></td>
+</tr>
+[% END %]
+<tr>
+[% f = form.field('roles') %]
+<td><label for="[% f.name %]">Roles:</label></td>
+<td>[% f.render %]</td>
+</tr>
